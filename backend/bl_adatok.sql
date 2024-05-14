@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `bl-adatok`
+-- Tábla szerkezet ehhez a táblához `bl_adatok`
 --
 
-CREATE TABLE `bl-adatok` (
+CREATE TABLE `bl_adatok` (
   `id` int(11) NOT NULL,
   `klubnev` varchar(1000) NOT NULL,
   `gyozelmek_szama` int(11) NOT NULL,
@@ -36,10 +36,10 @@ CREATE TABLE `bl-adatok` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- A tábla adatainak kiíratása `bl-adatok`
+-- A tábla adatainak kiíratása `bl_adatok`
 --
 
-INSERT INTO `bl-adatok` (`id`, `klubnev`, `gyozelmek_szama`, `legutobb_gyozott`, `mvp`) VALUES
+INSERT INTO `bl_adatok` (`id`, `klubnev`, `gyozelmek_szama`, `legutobb_gyozott`, `mvp`) VALUES
 (1, 'Real Madrid', 14, '2021-05-28', 'Karim Benzema'),
 (2, 'Manchester City', 1, '2023-06-10', 'Rodri'),
 (3, 'Chelsea', 2, '2020-05-29', 'N\'Goló Kanté'),
@@ -51,9 +51,9 @@ INSERT INTO `bl-adatok` (`id`, `klubnev`, `gyozelmek_szama`, `legutobb_gyozott`,
 --
 
 --
--- A tábla indexei `bl-adatok`
+-- A tábla indexei `bl_adatok`
 --
-ALTER TABLE `bl-adatok`
+ALTER TABLE `bl_adatok`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -61,9 +61,9 @@ ALTER TABLE `bl-adatok`
 --
 
 --
--- AUTO_INCREMENT a táblához `bl-adatok`
+-- AUTO_INCREMENT a táblához `bl_adatok`
 --
-ALTER TABLE `bl-adatok`
+ALTER TABLE `bl_adatok`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
