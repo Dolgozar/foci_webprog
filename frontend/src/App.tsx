@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
+//import { Focits } from './Focits.ts'
+import { Foci, FociAdat } from '../components/Foci'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [data, setData] = useState([] as FociAdat[])
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+  useEffect(() => {
+    async function load(){
+      const response = await fetch('http://localhost:3000/foci')
+      const data = await response.json() as FociAdat[];
+      setData(data)
+    }
+    load();
+  }, [data])
+
+  return <div>
+
+  <table className='tabla'>
+    <thead>
+      <tr>
+        <th>Klubnév</th>
+        <th>Győzelmek száma</th>
+        <th>Legutóbb győzőtt</th>
+        <th>Mvp</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        data.map(data => <Foci key={data.id} klubnev={data.klubnev} gyozelem_db={data.gyozelem_db} legutobb_w={data.legutobb_w} mvp={data.mvp}></Foci >)
+      }
+    </tbody>
+  </table>
+
+
+
+  </div>
 }
 
 export default App
