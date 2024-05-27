@@ -16,29 +16,30 @@ function App() {
     async function load(){
       const response = await fetch('http://localhost:3000/csapatok')
       const data = await response.json() as Focits[];
-      setData(data)
+      setData(data);
     }
     load();
-  }, [data])
+  }, [data]);
 
   async function addKlub(event: FormEvent){
     event.preventDefault();
     const klub = klubref.current?.value;
-    const gyozelemdb = gyozelemref.current?.value;
-    const legutobb = legutobbref.current?.value;
+    const gyozelem_db = gyozelemref.current?.value;
+    const legutobb_w = legutobbref.current?.value;
     const mvp = mvpref.current?.value;
 
 
     const csapat = {
       klubnev: klub,
-      gyozelem_db: gyozelemdb, 
-      legutobb_w: legutobb,
-      mvp: mvp,
+      gyozelem_db: gyozelem_db, 
+      legutobb_w: legutobb_w,
+      mvp: mvp
     }
-    const res = await fetch('https://localhost:3000/csapatok', {
+
+    const res = await fetch('http://localhost:3000/csapatok', {
       method: "POST",
       body: JSON.stringify(csapat),
-      headers: {"Content-Type": "application/json"}
+      headers: {"Content-Type": "application/json"},
     });
     if(res.ok){
       console.log("Hozzáadva!")
@@ -50,20 +51,18 @@ function App() {
   }
 
 
-
-
   return <div>
   <form className="felvetel" onSubmit={event => addKlub(event)}>
     <h1 className='title'>Csapat Hozzáadása</h1>
-    <input type="text" ref={klubref} placeholder='Klubnév...'/><br />
-    <input type="number" min="0" ref={gyozelemref} placeholder='Győzelmek...'/><br />
-    <input type="date" ref={legutobbref} placeholder='Legutóbb...'/><br />
-    <input type="text" ref={mvpref} placeholder='Mvp...'/><br />
+    <input type="text" ref={klubref} placeholder='Klubnév...'/><br /><br />
+    <input type="number" ref={gyozelemref} placeholder='Győzelmek...'/><br /><br />
+    <input type="date" ref={legutobbref} placeholder='Legutóbb...'/><br /><br />
+    <input type="text" ref={mvpref} placeholder='Mvp...'/><br /><br />
     <button type='submit'>Felvétel</button>
     <br />
-    <br />
   </form>
-
+  <br />
+  <br />
 
   <table className='tabla'>
     <thead>
@@ -76,7 +75,7 @@ function App() {
     </thead>
     <tbody>
       {
-          data.map((data) => <Foci key={data.id} klubnev={data.klubnev} gyozelem_db={data.gyozelem_db} legutobb_w={data.legutobb_w} mvp={data.mvp}></Foci>) 
+          data.map((data) =><Foci key={data.id} klubnev={data.klubnev} gyozelem_db={data.gyozelem_db} legutobb_w={data.legutobb_w} mvp={data.mvp}></Foci>) 
       }
     </tbody>
   </table>

@@ -20,15 +20,15 @@ app.get('/csapatok', async (req, res) => {
 
 app.post('/csapatok', async (req, res) => {
     console.log(req.body);
-    const [data, fields] = await bl_gyozelmek.query('INSERT INTO bl_adatok (klubnev, gyozelmek_szama, legutobb_gyozott, mvp) VALUES(?,?,?,?)', [req.body.klubnev, req.body.gyozelmek_szama, req.body.legutobb_gyozott, req.body.mvp]);
+    const[data, fields] = await bl_gyozelmek.query('INSERT INTO bl_adatok (klubnev, gyozelmek_szama, legutobb_gyozott, mvp) VALUES(?,?,?,?)', [req.body.klubnev, req.body.gyozelmek_szama, req.body.legutobb_gyozott, req.body.mvp]);
     res.status(201).send({
-            id: data.insertId,
-            klubnev: req.body.klubnev,
-            gyozelmek_szama: req.body.gyozelmek_szama,
-            legutobb_gyozott: req.body.legutobb_gyozott,
-            mvp: req.body.mvp
-    });
+        id: data.insertId,
+        klubnev: req.body.klubnev,
+        gyozelmek_szama: req.body.gyozelmek_szama,
+        legutobb_gyozott: req.body.legutobb_gyozott,
+        mvp: req.body.mvp
+    })
     res.send("Sikeres Felvétel!")
-});
+})
 
 app.listen(3000);

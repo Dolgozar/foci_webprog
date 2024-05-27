@@ -11,7 +11,7 @@ export function Foci({klubnev, gyozelem_db, legutobb_w, mvp}: FociAdat){
         <tr>
             <td>{klubnev}</td>
             <td>{gyozelem_db}</td>
-            <td>{legutobb_w}</td>
+            <td>{legutobb_w?.toLocaleString()}</td>
             <td>{mvp}</td>
         </tr>
     </>
