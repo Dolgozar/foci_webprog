@@ -16,7 +16,8 @@ const bl_gyozelmek = mysql.createPool({
 app.get('/csapatok', async (req, res) => {
     const [rows, fields] = await bl_gyozelmek.query('SELECT id, klubnev, gyozelmek_szama, CAST(legutobb_gyozott AS char) legutobb_gyozott, mvp FROM bl_adatok');
     res.send(rows);
-}); 
+});
+ 
 app.post('/csapatok', async (req, res) => {
     console.log(req.body);
     const [data,fields] = await bl_gyozelmek.query('SELECT id, klubnev, gyozelmek_szama, CAST(legutobb_gyozott AS char) legutobb_gyozott, mvp FROM bl_adatok');
