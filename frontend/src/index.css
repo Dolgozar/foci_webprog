@@ -6,8 +6,10 @@
     margin-left: auto;
     margin-right: auto;
     padding: 8px;
+   
     
 }
+
 
 form{
     margin-left: auto;
@@ -17,9 +19,27 @@ form{
     border-radius: 20px;
     padding: 12px;
     display: inline-block;
+    color:lightBlue;
 
 }
 
 body{
     text-align: center;
+    background: url("Background/kep1.jpg");
+    background-size:100%; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 100vh; 
+    margin: 0; 
+    padding: 0;
 }
+
+.green-footer {
+    background-color: lightblue; 
+    color: black; 
+    padding: 10px 0; 
+    position: fixed;
+    bottom: 0; 
+    width: 67%;
+    text-align: center;
+  }
