@@ -1,7 +1,8 @@
 export interface Focits{
    id: number,
    klubnev: string,
-   gyozelem_db: number, 
-   legutobb_w: Date,
+   gyozelmek_szama: number, 
+   legutobb_gyozott: string,
    mvp: string
 }
+
